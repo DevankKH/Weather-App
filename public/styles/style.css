@@ -1,0 +1,229 @@
+/* Backgrounds 
+    Sun (clear) -  #6AD4DD
+    Rain (rain + drizzle) -  #7F7B82
+    Storm - #171614
+    Cloud - #EDD4B2
+    Snow - #6482AD
+    Atmosphere (Other) - #9A8873
+    Neutral - #756AB6
+*/
+:root {
+    --sun: #6AD4DD;
+    --rain: #7F7B82;
+    --storm: #171614;
+    --cloud: #EDD4B2;
+    --snow: #6482AD;
+    --other: #9A8873;
+    --normal: #756AB6;
+    --theme: var(--normal);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    width: 100%;
+    font-family: Roboto, sans-serif;
+    background: white;
+    position: relative;
+    overflow: hidden;
+}
+
+#background {
+    position: absolute;
+    z-index: 0;
+    background-image: url('../assets/Background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* --------------------------------------------------------- */
+/* Container holding body content*/
+#container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    margin: 0px;
+    font-size: 50pt;
+    padding-left: 80px;
+    padding-top: 40px;
+    color: var(--theme);
+}
+
+/* --------------------------------------------------------- */
+/* Search bar section */
+#search {
+    padding-left: 130px;
+    margin-top: 25px;
+}
+
+h2 {
+    font-size: 20pt;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+#search_container {
+    display: flex;
+    align-items: center;
+}
+
+#search_type {
+    width: 160px;
+    height: 28px;
+    font-size: 17pt;
+    border: none;
+    margin-right: 25px;
+}
+
+#search_type:focus {
+    outline: none;
+}
+
+#latitude, #longitude {
+    width: 100px;
+    height: 15px;
+    font-size: 12pt;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 4px;
+}
+
+#search_box {
+    width: 200px;
+    height: 15px;
+    font-size: 12pt;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 4px;
+}
+
+label {
+    height: 15px;
+    font-size: 17pt;
+    margin-right: 10px;
+}
+
+#magnify {
+    border: none;
+    background: none;
+}
+
+.fa-magnifying-glass {
+    padding-top: 5px;
+    font-size: 24pt;
+}
+
+#magnify:hover {
+    cursor: pointer;
+    color: var(--theme);
+}
+
+/* --------------------------------------------------------- */
+/* Dsiplay section */
+#display {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    margin-left: -500px;
+    width: 1000px;
+    height: 450px;
+    background: var(--theme);;
+    border-radius: 10px;
+    align-self: center;
+    z-index: 2;
+    display: flex;
+    font-size: 16pt;
+}
+
+#left {
+    width: 500px;
+    height: 450px;
+    border-radius: 10px 0px 0px 10px;
+    background: white;
+}
+
+#right {
+    width: 500px;
+    height: 450px;
+    border-radius: 0px 10px 10px 0px;
+}
+
+h3:nth-child(1) {
+    padding-top: 35px;
+}
+
+h3 {
+    margin: 0;
+    padding-left: 35px;
+    padding-bottom: 10px;
+    padding-top: 20px;
+    color: var(--theme);
+}
+
+h4 {
+    margin: 0;
+    display: inline;
+    padding-left: 50px;
+    font-style: italic;
+    color: var(--theme);
+}
+
+p {
+    margin: 0;
+    padding: 0;
+    padding-left: 50px;
+}
+
+#weather {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#weather p:nth-child(3) {
+    margin-top: 15px;
+}
+
+#temp {
+    margin-top: 15px;
+}
+
+img {
+    width: 130px;
+    padding-bottom: 10px;
+    align-self: center;
+}
+
+.fa-arrow-down {
+    color: red;
+    padding-left: 5px;
+}
+
+.fa-arrow-up {
+    color: green;
+    padding-left: 5px;
+}
+
+#error p {
+    padding-left: 30px;
+    padding-top: 30px;
+}
+
+
+/* --------------------------------------------------------- */
+/* Class to hide and show search types based on selected search option from select */
+.hide {
+    display: none;
+}
+
+.show {
+    display: inline-block;
+}
