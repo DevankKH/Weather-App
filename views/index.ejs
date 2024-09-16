@@ -52,36 +52,35 @@
                     <h4>Latitude: </h4> <%= weather.coord.lon %> 
                     <h4>Longitude: </h4><%= weather.coord.lat %> 
                 </p>
-                <div id="weather">
-                    <% if(weather.weather[0].main == "Clouds") { %>
-                        <img src="../assets/clouds.png">
-                    <% } else if(weather.weather[0].main == "Thunderstorm") { %>
-                        <img src="../assets/storm.png">
-                    <% } else if(weather.weather[0].main == "Drizzle") { %>
-                        <img src="../assets/rain.png">
-                    <% } else if(weather.weather[0].main == "Rain") { %>
-                        <img src="../assets/rain.png">
-                    <% } else if(weather.weather[0].main == "Snow") { %>
-                        <img src="../assets/snowy.png">
-                    <% } else if(weather.weather[0].main == "Clear") { %>
-                        <img src="../assets/sun.png">
-                    <% } else if(weather.weather[0].main == "Mist" || weather.weather[0].main == "Smoke" || weather.weather[0].main == "Haze" || weather.weather[0].main == "Dust" ||
-                                weather.weather[0].main == "Fog" || weather.weather[0].main == "Sand" || weather.weather[0].main == "Ash" || weather.weather[0].main == "Squall" ||
-                                weather.weather[0].main == "Tornado") { %>
-                        <img src="../assets/foggy.png">
-                    <% } else { %>
-                        <img src="../assets/sun.png">
-                    <% } %>
-                    <p>Todays forecast says <%= weather.weather[0].description %>.</p>
-                    <div id="temp">
-                        <h4>Temperature: </h4> <%= weather.main.temp %>°C
-                        <i class="fa-solid fa-arrow-down"></i> <%= weather.main.temp_min %>°C
-                        <i class="fa-solid fa-arrow-up"></i> <%= weather.main.temp_max %>°C
-                    </div>
-                </div>
+                <h3>Forecast</h3> 
+                <p>Todays forecast says <%= weather.weather[0].description %></p>
+                <h3>Temperature</h3> 
+                <p>
+                    <%= weather.main.temp %>°C
+                    <i class="fa-solid fa-arrow-down"></i> <%= weather.main.temp_min %>°C
+                    <i class="fa-solid fa-arrow-up"></i> <%= weather.main.temp_max %>°C
+                </p>
             </div>
             <div id="right">
-                
+                <% if(weather.weather[0].main == "Clouds") { %>
+                    <img src="../assets/clouds.png" id="<%= weather.weather[0].main %>">
+                <% } else if(weather.weather[0].main == "Thunderstorm") { %>
+                    <img src="../assets/storm.png" id="<%= weather.weather[0].main %>">
+                <% } else if(weather.weather[0].main == "Drizzle") { %>
+                    <img src="../assets/rain.png" id="<%= weather.weather[0].main %>">
+                <% } else if(weather.weather[0].main == "Rain") { %>
+                    <img src="../assets/rain.png" id="<%= weather.weather[0].main %>">
+                <% } else if(weather.weather[0].main == "Snow") { %>
+                    <img src="../assets/snowy.png" id="<%= weather.weather[0].main %>">
+                <% } else if(weather.weather[0].main == "Clear") { %>
+                    <img src="../assets/sun.png" id="<%= weather.weather[0].main %>">
+                <% } else if(weather.weather[0].main == "Mist" || weather.weather[0].main == "Smoke" || weather.weather[0].main == "Haze" || weather.weather[0].main == "Dust" ||
+                            weather.weather[0].main == "Fog" || weather.weather[0].main == "Sand" || weather.weather[0].main == "Ash" || weather.weather[0].main == "Squall" ||
+                            weather.weather[0].main == "Tornado") { %>
+                    <img src="../assets/foggy.png" id="<%= weather.weather[0].main %>">
+                <% } else { %>
+                    <img src="../assets/sun.png" id="<%= weather.weather[0].main %>">
+                <% } %>
             </div>
         <% } else { %>
             <div id="left">
@@ -97,6 +96,28 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
+        let image = $('img')[0];
+        let color = $(':root');
+        if (image.getAttribute('id') == "Clouds") {
+            color.attr('style', '--theme:var(--cloud)');
+        } else if(image.getAttribute('id') == "Thunderstorm") {
+            color.attr('style', '--theme:var(--storm)');
+        } else if(image.getAttribute('id') == "Drizzle") {
+            color.attr('style', '--theme:var(--rain)');
+        } else if(image.getAttribute('id') == "Rain") {
+            color.attr('style', '--theme:var(--rain)');
+        } else if(image.getAttribute('id') == "Snow") {
+            color.attr('style', '--theme:var(--snow)');
+        } else if(image.getAttribute('id') == "Clear") {
+            color.attr('style', '--theme:var(--sun)');
+        } else if(image.getAttribute('id') == "Mist" || image.getAttribute('id') == "Smoke" || image.getAttribute('id') == "Haze" || image.getAttribute('id') == "Dust" ||
+                image.getAttribute('id') == "Fog" || image.getAttribute('id') == "Sand" || image.getAttribute('id') == "Ash" || image.getAttribute('id') == "Squall" ||
+                image.getAttribute('id') == "Tornado") {
+            color.attr('style', '--theme:var(--other)');
+        } else {
+            color.attr('style', '--theme:var(--normal)');
+        };
+
         $('#search_type').change(() => {
             let val = $('#search_type').val();
             if (val == "name") {
